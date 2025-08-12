@@ -16,7 +16,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "TasteVoyage" target */ = {
+		B591F9F62E4A6231005AC05C /* Exceptions for "TasteVoyage" folder in "TasteVoyage" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Helpers/ImagePicker.swift,
@@ -26,12 +26,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B591F9E12E4A37D9005AC05C /* TaskManager */ = {
+		B591F9E12E4A37D9005AC05C /* TasteVoyage */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "TasteVoyage" target */,
+				B591F9F62E4A6231005AC05C /* Exceptions for "TasteVoyage" folder in "TasteVoyage" target */,
 			);
-			path = TaskManager;
+			path = TasteVoyage;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -51,7 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				B591F9FF2E4B1036005AC05C /* RecipeApp.xcdatamodeld */,
-				B591F9E12E4A37D9005AC05C /* TaskManager */,
+				B591F9E12E4A37D9005AC05C /* TasteVoyage */,
 				B591F9E02E4A37D9005AC05C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,7 +80,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B591F9E12E4A37D9005AC05C /* TaskManager */,
+				B591F9E12E4A37D9005AC05C /* TasteVoyage */,
 			);
 			name = TasteVoyage;
 			packageProductDependencies = (
@@ -274,7 +274,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/TaskManager/Application/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = B3HVSG74P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -304,7 +304,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/TaskManager/Application/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = B3HVSG74P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
