@@ -11,17 +11,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B591F9DF2E4A37D9005AC05C /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B591F9DF2E4A37D9005AC05C /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B591FA002E4B1036005AC05C /* RecipeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeApp.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "TaskManager" target */ = {
+		B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "RecipeApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Helpers/ImagePicker.swift,
 			);
-			target = B591F9DE2E4A37D9005AC05C /* TaskManager */;
+			target = B591F9DE2E4A37D9005AC05C /* RecipeApp */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -29,7 +29,7 @@
 		B591F9E12E4A37D9005AC05C /* TaskManager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "TaskManager" target */,
+				B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "RecipeApp" target */,
 			);
 			path = TaskManager;
 			sourceTree = "<group>";
@@ -59,7 +59,7 @@
 		B591F9E02E4A37D9005AC05C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B591F9DF2E4A37D9005AC05C /* TaskManager.app */,
+				B591F9DF2E4A37D9005AC05C /* RecipeApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B591F9DE2E4A37D9005AC05C /* TaskManager */ = {
+		B591F9DE2E4A37D9005AC05C /* RecipeApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B591F9ED2E4A37DA005AC05C /* Build configuration list for PBXNativeTarget "TaskManager" */;
+			buildConfigurationList = B591F9ED2E4A37DA005AC05C /* Build configuration list for PBXNativeTarget "RecipeApp" */;
 			buildPhases = (
 				B591F9DB2E4A37D9005AC05C /* Sources */,
 				B591F9DC2E4A37D9005AC05C /* Frameworks */,
@@ -82,11 +82,11 @@
 			fileSystemSynchronizedGroups = (
 				B591F9E12E4A37D9005AC05C /* TaskManager */,
 			);
-			name = TaskManager;
+			name = RecipeApp;
 			packageProductDependencies = (
 			);
 			productName = TaskManager;
-			productReference = B591F9DF2E4A37D9005AC05C /* TaskManager.app */;
+			productReference = B591F9DF2E4A37D9005AC05C /* RecipeApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,7 +104,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B591F9DA2E4A37D9005AC05C /* Build configuration list for PBXProject "TaskManager" */;
+			buildConfigurationList = B591F9DA2E4A37D9005AC05C /* Build configuration list for PBXProject "RecipeApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -120,7 +120,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B591F9DE2E4A37D9005AC05C /* TaskManager */,
+				B591F9DE2E4A37D9005AC05C /* RecipeApp */,
 			);
 		};
 /* End PBXProject section */
@@ -287,7 +287,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.golovlev.TaskManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.golovlev.RecipeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -316,7 +316,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.golovlev.TaskManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.golovlev.RecipeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -327,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B591F9DA2E4A37D9005AC05C /* Build configuration list for PBXProject "TaskManager" */ = {
+		B591F9DA2E4A37D9005AC05C /* Build configuration list for PBXProject "RecipeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B591F9EB2E4A37DA005AC05C /* Debug */,
@@ -336,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B591F9ED2E4A37DA005AC05C /* Build configuration list for PBXNativeTarget "TaskManager" */ = {
+		B591F9ED2E4A37DA005AC05C /* Build configuration list for PBXNativeTarget "RecipeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B591F9EE2E4A37DA005AC05C /* Debug */,
