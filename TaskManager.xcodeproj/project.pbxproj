@@ -6,13 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B591FA012E4B1036005AC05C /* RecipeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B591F9FF2E4B1036005AC05C /* RecipeApp.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B591F9DF2E4A37D9005AC05C /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B591FA002E4B1036005AC05C /* RecipeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeApp.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "TaskManager" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helpers/ImagePicker.swift,
+			);
+			target = B591F9DE2E4A37D9005AC05C /* TaskManager */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B591F9E12E4A37D9005AC05C /* TaskManager */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B591F9F62E4A6231005AC05C /* Exceptions for "TaskManager" folder in "TaskManager" target */,
+			);
 			path = TaskManager;
 			sourceTree = "<group>";
 		};
@@ -32,6 +50,7 @@
 		B591F9D62E4A37D9005AC05C = {
 			isa = PBXGroup;
 			children = (
+				B591F9FF2E4B1036005AC05C /* RecipeApp.xcdatamodeld */,
 				B591F9E12E4A37D9005AC05C /* TaskManager */,
 				B591F9E02E4A37D9005AC05C /* Products */,
 			);
@@ -94,6 +113,8 @@
 			);
 			mainGroup = B591F9D62E4A37D9005AC05C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B591F9E02E4A37D9005AC05C /* Products */;
 			projectDirPath = "";
@@ -119,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B591FA012E4B1036005AC05C /* RecipeApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +273,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TaskManager/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/TaskManager/Application/Preview Content\"";
 				DEVELOPMENT_TEAM = B7HZ65DT3V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -280,7 +302,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TaskManager/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"$(SRCROOT)/TaskManager/Application/Preview Content\"";
 				DEVELOPMENT_TEAM = B7HZ65DT3V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -324,6 +346,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B591F9FF2E4B1036005AC05C /* RecipeApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B591FA002E4B1036005AC05C /* RecipeApp.xcdatamodel */,
+			);
+			currentVersion = B591FA002E4B1036005AC05C /* RecipeApp.xcdatamodel */;
+			path = RecipeApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B591F9D72E4A37D9005AC05C /* Project object */;
 }

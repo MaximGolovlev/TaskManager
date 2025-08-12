@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct TaskManagerApp: App {
+    
+    @StateObject private var recipeStore = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
+                .environmentObject(recipeStore)
+                .preferredColorScheme(.light)
         }
     }
 }
