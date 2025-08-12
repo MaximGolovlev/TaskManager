@@ -25,16 +25,11 @@ struct AddEditRecipeView: View {
     
     let predefinedCategories = ["Breakfast", "Lunch", "Dinner", "Dessert", "Snack", "Drink"]
     
+    // Performance optimization
+    @State private var loaded = false
+    
     init(recipe: RecipeEntity? = nil) {
         self.recipe = recipe
-        if let recipe = recipe {
-            _name = State(initialValue: recipe.wrappedName)
-            _category = State(initialValue: recipe.wrappedCategory)
-            _ingredients = State(initialValue: recipe.ingredientsArray)
-            _steps = State(initialValue: recipe.stepsArray)
-            _isFavorite = State(initialValue: recipe.isFavorite)
-            _image = State(initialValue: recipe.uiImage)
-        }
     }
     
     var allCategories: [String] {
@@ -45,102 +40,17 @@ struct AddEditRecipeView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                EarthyColors.background
-                    .ignoresSafeArea()
-                Form {
-                    Section {
-                        HStack {
-                            if let uiImage = image {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 80, height: 80)
-                                    .cornerRadius(8)
-                                    .clipped()
-                            } else {
-                                Image(systemName: "photo")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            PhotosPicker(selection: $selectedImage, matching: .images) {
-                                Text("Select Image")
-                                    .foregroundColor(EarthyColors.primary)
-                            }
-                            .onChange(of: selectedImage) { _ in
-                                Task {
-                                    if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
-                                        image = UIImage(data: data)
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.vertical, 8)
-                    }
-                    .listRowBackground(EarthyColors.cardBackground)
-                    
-                    Section(header: Text("Recipe Information")) {
-                        TextField("Name", text: $name)
-                        
-                        Picker("Category", selection: $category) {
-                            Text("Select a category").tag("")
-                            ForEach(allCategories, id: \.self) { cat in
-                                Text(cat).tag(cat)
-                            }
-                        }
-                        
-                        Button("Add New Category") {
-                            showingCategoryInput = true
-                        }
-                        .foregroundColor(EarthyColors.primary)
-                    }
-                    .listRowBackground(EarthyColors.cardBackground)
-                    
-                    Section(header: Text("Ingredients")) {
-                        ForEach(ingredients.indices, id: \.self) { index in
-                            TextField("Ingredient \(index + 1)", text: $ingredients[index])
-                        }
-                        .onDelete { indices in
-                            ingredients.remove(atOffsets: indices)
-                        }
-                        
-                        Button(action: {
-                            ingredients.append("")
-                        }) {
-                            Label("Add Ingredient", systemImage: "plus")
-                                .foregroundColor(EarthyColors.primary)
-                        }
-                    }
-                    .listRowBackground(EarthyColors.cardBackground)
-                    
-                    Section(header: Text("Steps")) {
-                        ForEach(steps.indices, id: \.self) { index in
-                            TextField("Step \(index + 1)", text: $steps[index], axis: .vertical)
-                        }
-                        .onDelete { indices in
-                            steps.remove(atOffsets: indices)
-                        }
-                        
-                        Button(action: {
-                            steps.append("")
-                        }) {
-                            Label("Add Step", systemImage: "plus")
-                                .foregroundColor(EarthyColors.primary)
-                        }
-                    }
-                    .listRowBackground(EarthyColors.cardBackground)
-                    
-                    if recipe != nil {
-                        Section {
-                            Toggle("Favorite", isOn: $isFavorite)
-                        }
-                        .listRowBackground(EarthyColors.cardBackground)
-                    }
+            List {
+                imageSection
+                informationSection
+                ingredientsSection
+                stepsSection
+
+                if recipe != nil {
+                    favouriteSection
                 }
             }
+            .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
             .navigationTitle(recipe == nil ? "Add Recipe" : "Edit Recipe")
             .toolbar {
@@ -171,7 +81,122 @@ struct AddEditRecipeView: View {
                 }
                 Button("Cancel", role: .cancel) { }
             }
+            .background(EarthyColors.background)
+            .onAppear {
+                guard !loaded else { return }
+                loadInitialData()
+                loaded = true
+            }
         }
+    }
+    
+    private var imageSection: some View {
+        Section {
+            HStack {
+                if let uiImage = image {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 80, height: 80)
+                        .cornerRadius(8)
+                        .clipped()
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 80)
+                        .foregroundColor(.gray)
+                }
+                
+                PhotosPicker(selection: $selectedImage, matching: .images) {
+                    Text("Select Image")
+                        .foregroundColor(EarthyColors.primary)
+                }
+                .onChange(of: selectedImage) { _ in
+                    Task {
+                        if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
+                            image = UIImage(data: data)
+                        }
+                    }
+                }
+            }
+            .padding(.vertical, 8)
+        }
+        .listRowBackground(EarthyColors.cardBackground)
+    }
+    
+    private var informationSection: some View {
+        Section(header: Text("Recipe Information")) {
+            TextField("Name", text: $name)
+            
+            Picker("Category", selection: $category) {
+                Text("Select a category").tag("")
+                ForEach(allCategories, id: \.self) { cat in
+                    Text(cat).tag(cat)
+                }
+            }
+            
+            Button("Add New Category") {
+                showingCategoryInput = true
+            }
+            .foregroundColor(EarthyColors.primary)
+        }
+        .listRowBackground(EarthyColors.cardBackground)
+    }
+    
+    private var ingredientsSection: some View {
+        Section(header: Text("Ingredients")) {
+            ForEach(ingredients.indices, id: \.self) { index in
+                TextField("Ingredient \(index + 1)", text: $ingredients[index])
+            }
+            .onDelete { indices in
+                ingredients.remove(atOffsets: indices)
+            }
+            
+            Button(action: {
+                ingredients.append("")
+            }) {
+                Label("Add Ingredient", systemImage: "plus")
+                    .foregroundColor(EarthyColors.primary)
+            }
+        }
+        .listRowBackground(EarthyColors.cardBackground)
+    }
+    
+    private var stepsSection: some View {
+        Section(header: Text("Steps")) {
+            ForEach(steps.indices, id: \.self) { index in
+                TextField("Step \(index + 1)", text: $steps[index], axis: .vertical)
+            }
+            .onDelete { indices in
+                steps.remove(atOffsets: indices)
+            }
+            
+            Button(action: {
+                steps.append("")
+            }) {
+                Label("Add Step", systemImage: "plus")
+                    .foregroundColor(EarthyColors.primary)
+            }
+        }
+        .listRowBackground(EarthyColors.cardBackground)
+    }
+    
+    private var favouriteSection: some View {
+        Section {
+            Toggle("Favorite", isOn: $isFavorite)
+        }
+        .listRowBackground(EarthyColors.cardBackground)
+    }
+    
+    private func loadInitialData() {
+        guard let recipe = recipe else { return }
+        name = recipe.wrappedName
+        category = recipe.wrappedCategory
+        ingredients = recipe.ingredientsArray
+        steps = recipe.stepsArray
+        isFavorite = recipe.isFavorite
+        image = recipe.uiImage
     }
     
     private func saveRecipe() {
