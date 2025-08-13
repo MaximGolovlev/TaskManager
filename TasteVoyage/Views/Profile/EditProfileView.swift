@@ -13,16 +13,9 @@ struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedImage: PhotosPickerItem?
     
-    @State private var name: String
-    @State private var bio: String
+    @State private var name: String = ""
+    @State private var bio: String = ""
     @State private var image: UIImage?
-    
-    init() {
-        let profile = DataController.shared.userProfile
-        _name = State(initialValue: profile?.wrappedName ?? "")
-        _bio = State(initialValue: profile?.wrappedBio ?? "")
-        _image = State(initialValue: profile?.uiImage)
-    }
     
     var body: some View {
         NavigationStack {
@@ -94,6 +87,11 @@ struct EditProfileView: View {
                 }
             }
             .background(EarthyColors.background)
+            .onAppear() {
+                name = dataController.userProfile?.wrappedName ?? ""
+                bio = dataController.userProfile?.wrappedBio ?? ""
+                image = dataController.userProfile?.uiImage
+            }
         }
     }
 }
